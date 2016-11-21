@@ -1,5 +1,4 @@
-<div class="container container1">
-	
+<div class="container ">
 	<div class="row">
 		<div  id='post' class='postcontainer col-sm-8 col-sm-offset-2'>
 			<div class="posts">
@@ -8,9 +7,13 @@
 					<img ng-src="/images/{{post.image}}" width="100%" height="auto">
 				</div>
 				<p>{{post.content}}</p>
+				<div class='row'>
+				<div ng-show="permisions()" id='options_div' class='col-xs-8 col-xs-offset-4 col-sm-6 col-md-5 col-md-offset-4 col-lg-offset-8 col-lg-4'>
+					<a class="btn btn-default col-xs-8 col-xs-offset-4 col-sm-5 col-sm-offset-1" ui-sref="post_edit({id:post.id})" role="button">Edit Post</a>
+					<button class="btn btn-danger col-sm-5 col-sm-offset-1 col-xs-8 col-xs-offset-4 " ng-click="delete()">Delete Post</button>
+				</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-
 </div>

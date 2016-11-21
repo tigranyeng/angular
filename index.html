@@ -6,9 +6,12 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script src='js/myApp.js' type="text/javascript"></script>
+		<script type="text/javascript" src="js/ng-file-upload/ng-file-upload.min.js"></script>
+        <script src='js/myApp.js' type="text/javascript"></script>
 		<script src='js/config.js' type="text/javascript"></script>
 		<script src='controllers/postController.js' type="text/javascript"></script>
+		<script src='controllers/loginController.js' type="text/javascript"></script>
+        <script src='controllers/registerController.js' type="text/javascript"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
@@ -39,70 +42,67 @@
                     </ul>
 
                     
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right" ng-controller="loginController">
                         
                        
-                            <li ng-hide="false"><a  ui-sref="login">Login</a></li>
-                            <li ng-hide="false"><a ui-sref="register">Register</a></li>
-                     
-                            <li ng-hide="false"><a ui-sref="index">Home</a></li>
-                            <li ng-hide="false"><a ui-sref="about">About</a></li>
-                            <li class="dropdown" ng-hide="false">
-                                <a href='' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    Posts <span class="caret"></span>
-                                </a>
+                        <li ng-hide="loggedIn"><a  ui-sref="login">Login</a></li>
+                        <li ng-hide="loggedIn"><a ui-sref="register">Register</a></li>
+                 
+                        <li ng-show="loggedIn"><a ui-sref="index">Home</a></li>
+                        <li ng-show="loggedIn"><a ui-sref="about">About</a></li>
+                        <li class="dropdown" ng-show="loggedIn">
+                            <a href='' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                Posts <span class="caret"></span>
+                            </a>
 
-                                <ul class="dropdown-menu" role="menu" >
-                                    <li>
-                                        <a ui-sref="posts">
-                                            
-                                            Posts
-                                        </a>
-
+                            <ul class="dropdown-menu" role="menu" >
+                                <li>
+                                    <a ui-sref="posts">
                                         
-                                    </li>
-                                    <li>
-                                        <a ui-sref="create">
-                                            
-                                            Add post
-                                        </a>
+                                        Posts
+                                    </a>
 
+                                    
+                                </li>
+                                <li>
+                                    <a ui-sref="posts_create">
                                         
-                                    </li>
-                                </ul>
-                            </li>    
-                        <li class="dropdown" ng-hide="false">
-                                <a href='' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ResponseDetails}} <span class="caret"></span>
-                                </a>
+                                        Add post
+                                    </a>
 
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="">
-                                            
-                                            My posts
-                                        </a>
+                                    {{user}}
+                                </li>
+                            </ul>
+                        </li>    
+                        <li class="dropdown" ng-show="loggedIn">
+                            <a href='' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                               <span >{{user}}</span><span class="caret"></span>
+                            </a>
 
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a ui-sref="my_posts">
                                         
-                                    </li>
-                                    <li>
-                                        <a href="">
-           
-                                            Logout
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        
+                                        My posts
+                                    </a>
+
+                                    
+                                </li>
+                                <li>
+                                    <a href="" ng-click="logout()">
+       
+                                        Logout
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    
                     </ul>
 
                 </div>
 
             </div>
         </nav>
-        
-        <!-- Hide HTML: <input type="checkbox" ng-model="myVar"> -->
-       <!-- <a ui-sref="posts.index">asdasdas</a>  -->
       
   		<ui-view></ui-view>
   	

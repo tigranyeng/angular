@@ -3,19 +3,19 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
-                <!-- <ul ng-if="ResponseDetails" class="alert alert-danger">
-                    <li ng-if="ResponseDetails.email[0]">{{ResponseDetails.email[0]}}</li>
-                    <li ng-if="ResponseDetails.name[0]">{{ResponseDetails.name[0]}}</li>
-                    <li ng-if="ResponseDetails.password[0]">{{ResponseDetails.password[0]}}</li>
-                    <li ng-if="ResponseDetails.password_confirmation[0]">{{ResponseDetails.password_confirmation[0]}}</li>
-                </ul> -->
+                <ul ng-if="errors" class="alert alert-danger">
+                    <li ng-if="errors.name[0]">{{errors.name[0]}}</li>
+                    <li ng-if="errors.email[0]">{{errors.email[0]}}</li>
+                    <li ng-if="errors.password[0]">{{errors.password[0]}}</li>
+                    <li ng-if="errors.password_confirmation[0]">{{errors.password_confirmation[0]}}</li>
+                </ul>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form">
                         <div class="form-group">
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input ng-model="name" id="name" type="text" class="form-control" value="" autofocus>
+                                <input ng-model="inputs.name" id="name" type="text" class="form-control" value="" autofocus>
                             </div>
                         </div>
 
@@ -23,7 +23,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input ng-model="email" id="email" type="email" class="form-control" value="">
+                                <input ng-model="inputs.email" id="email" type="email" class="form-control" >
                             </div>
                         </div>
 
@@ -31,7 +31,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input ng-model="password" id="password" type="password" class="form-control">
+                                <input ng-model="inputs.password" id="password" type="password" class="form-control">
                             </div>
                         </div>
 
@@ -39,13 +39,13 @@
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
 
                             <div class="col-md-6">
-                                <input ng-model="password_confirmation" id="password-confirm" type="password" class="form-control">
+                                <input ng-model="inputs.password_confirmation" id="password-confirm" type="password" class="form-control">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary" ng-click="submit()">
+                                <button type="submit" class="btn btn-primary" ng-click="submit(inputs)">
                                     Register
                                 </button>
                             </div>

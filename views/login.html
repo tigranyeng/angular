@@ -7,10 +7,10 @@
                     <li>{{confirm}}</li>
                 </ul>
                 
-                <ul ng-if="ResponseDetails" class="alert alert-danger">
-                    <li ng-if="ResponseDetails.email[0]">{{ResponseDetails.email[0]}}</li>
-                    <li ng-if="ResponseDetails.password[0]">{{ResponseDetails.password[0]}}</li>
-                    <li ng-if="ResponseDetails.message">{{ResponseDetails.message}}</li>
+                <ul ng-if="messages" class="alert alert-danger">
+                    <li ng-if="messages.email[0]">{{messages.email[0]}}</li>
+                    <li ng-if="messages.password[0]">{{messages.password[0]}}</li>
+                    <li ng-if="messages.message">{{messages.message}}</li>
                 </ul>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form">
@@ -18,7 +18,8 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input ng-model="email" id="email" type="email" class="form-control" autofocus>
+
+                                <input ng-model="inputs.email" id="email" type="email" class="form-control" >
                             </div>
                         </div>
 
@@ -26,7 +27,7 @@
                             <label for="password" class="col-md-4 control-label">Password</label>
 
                             <div class="col-md-6">
-                                <input ng-model="password" id="password" type="password" class="form-control">
+                                <input ng-model="inputs.password" id="password" type="password" class="form-control">
                             </div>
                         </div>
 
@@ -34,7 +35,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <div class="checkbox">
                                     <label>
-                                        <input ng-model="remember" type="checkbox"> Remember Me
+                                        <input ng-model="inputs.remember" type="checkbox"> Remember Me
                                     </label>
                                 </div>
                             </div>
@@ -42,16 +43,12 @@
 
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
-                                <a class="btn btn-primary" ng-click="submit()">
+                                <a class="btn btn-primary" ng-click="submit(inputs)">
                                     Login
                                 </a>
-
-                                
                             </div>
                         </div>
                     </form>
-                    <a href=''><img src='/images/facebook.jpg'></a>
-                    <a href=''><img src='/images/google.jpg'></a>
                 </div>
             </div>
         </div>
